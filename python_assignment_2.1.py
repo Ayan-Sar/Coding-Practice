@@ -1,0 +1,6 @@
+myStr =  input('Enter the string : ')
+delimeter = input('Enter the delimeter : ')
+splitColl = myStr.split(' ')
+joinedString = delimeter.join(splitColl)
+print(splitColl)
+print(joinedString)

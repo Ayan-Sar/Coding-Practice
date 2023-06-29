@@ -1,0 +1,79 @@
+#import libraries
+
+import requests
+
+from bs4 import BeautifulSoup
+
+import pandas as pd
+
+#base url which you want to scrap
+
+base_url = (‘https://en.wikipedia.org/wiki/List_of_state_and_union_territory_capitals_in_India’)
+
+#Make a get request to server
+
+r = requests.get(base_url)
+
+#initialize the soup object
+
+soup = BeautifulSoup(r.text, ‘html.parser’)
+
+#define the HTML table and class
+
+table=soup.find(‘table’, class_=’wikitable sortable plainrowheaders’)
+
+#declare empty lists
+
+list1=[]
+
+list2=[]
+
+list3=[]
+
+#make a simple loop
+
+for row in table.findAll(“tr”):
+
+table_data = row.findAll(‘td’)
+
+#to store second column data
+
+table_head = row.findAll(‘th’)
+
+#only extract table body not heading
+
+if len(table_data)==6:
+
+list1.append
+
+(table_data[0].find(text=True))
+
+list2.append
+
+(table_head[0].find(text=True))
+
+list3.append
+
+(table_data[1].find(text=True))
+
+print(“\n”)
+
+df=pd.DataFrame(list1,columns=[‘Number’])
+
+df[‘States/UT’]=list2
+
+df[‘Capital’]=list3
+
+#copy data frame in to CSV file
+
+#csv file has been created in current working directory
+
+df.to_csv(‘India.csv’)
+
+#read scraped data from CSV file
+
+read=pd.read_csv(‘/home/soft27/.config/spyder-py3/India.csv’)
+
+print(“Reading data from csv file”)
+
+print(read)

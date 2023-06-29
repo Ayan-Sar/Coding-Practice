@@ -1,0 +1,6 @@
+print("enter the sentence: ")
+sentence = str(input(""))
+my_arr = sentence.split(" ")
+length = len(my_arr)
+my_arr.sort(reverse=True,key=len)
+print(my_arr ,length )
